@@ -4,6 +4,8 @@ import (
 	"max"
 	"testing"
 	"testing/quick"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestMax(t *testing.T) {
@@ -21,7 +23,6 @@ func TestMax(t *testing.T) {
 		return true
 	}
 
-	if err := quick.Check(f, nil); err != nil {
-		t.Error(err)
-	}
+	err := quick.Check(f, nil)
+	assert.NoError(t, err)
 }
